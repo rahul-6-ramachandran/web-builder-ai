@@ -1,17 +1,25 @@
 
 
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'
 import './App.css'
+import Home from './components/Home/home'
+// import NavBar from './components/Navbar/NavBar'
+import Login from './components/Auth/Login'
 
 function App() {
  
   return (
     <>
-     <div className="flex items-center justify-center h-screen ">
-     <h1 className="text-3xl font-bold text-gray-700 ">
-      Hello world!
-    </h1>
-      
-     </div>
+   <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        {/* <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} /> */}
+        <Route path="/login" element={<Login/>} />
+        {/* <Route path="/login" element={<Signup/>} /> */}
+
+      </Routes>
+    </Router>
     </>
   )
 }
