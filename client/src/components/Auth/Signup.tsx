@@ -5,7 +5,7 @@ import { CreateUser } from '../../types.dto'
 import  Axios  from '../../config/axios'
 import { Link } from 'react-router-dom'
 
-export default function Login(){
+export default function Signup(){
 
     const [user,setUser] = useState<CreateUser>({
         email: '',
@@ -17,7 +17,7 @@ export default function Login(){
     }
     
     const handleSubmit = async()=>{
-        await Axios.get('/api/login').then((res:any)=>{
+        await Axios.post('/api/login',user).then((res:any)=>{
             console.log(res.data)
         })
     }
@@ -74,7 +74,7 @@ viewport={{ once: false, amount: 0.7 }}
         </div>
 
         <div className="mt-4">
-            <label className="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200" for="LoggingEmailAddress">Email Address</label>
+            <label className="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200" htmlFor="LoggingEmailAddress">Email Address</label>
             <input id="LoggingEmailAddress" className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300" 
             type="email"
             onChange={onChange}
@@ -85,7 +85,7 @@ viewport={{ once: false, amount: 0.7 }}
 
         <div className="mt-4">
             <div className="flex justify-between">
-                <label className="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200" for="loggingPassword">Password</label>
+                <label className="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200" htmlFor="loggingPassword">Password</label>
                 <a href="#" className="text-xs text-gray-500 dark:text-gray-300 hover:underline">Forget Password?</a>
             </div>
 

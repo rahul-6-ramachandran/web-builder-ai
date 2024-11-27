@@ -155,7 +155,7 @@ export default function Home() {
             <div className='flex gap-4 justify-between md:p-10 h-screen mt-24'>
            <motion.div  
            className='w-full lg:p-10'
-           variants={fadeIn("down", 0.2)}
+           variants={fadeIn("down", 0.3)}
            initial="hidden"
            whileInView={"show"}
            viewport={{ once: false, amount: 0.3 }}
@@ -212,7 +212,7 @@ export default function Home() {
                 style={{ backgroundImage: "url('/images/AdobeStock_216032849_Preview.jpeg')" }}>
                 <div className="relative w-full h-full inset-0 bg-black bg-opacity-50">
                     <motion.div
-                        variants={fadeIn("up", 0.3)}
+                        variants={fadeIn("up", 0.4)}
                         initial="hidden"
                         whileInView={"show"}
                         viewport={{ once: false, amount: 0.3 }}
@@ -263,7 +263,7 @@ export default function Home() {
                             variants={fadeIn("right", 0.3)}
                             initial="hidden"
                             whileInView={"show"}
-                            viewport={{ once: false, amount: 0.3 }}
+                            viewport={{ once: false, amount: 0.7 }}
                             className='p-4'
                         >
 
