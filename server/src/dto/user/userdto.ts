@@ -1,7 +1,9 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { Allow, IsEmail, IsNotEmpty, IsOptional, IsString, MinLength } from "class-validator";
+import { ObjectId } from "mongoose";
 
 export class UserDTO {
+
     @ApiProperty({ required : true , description:"User registration Email"})
     @IsNotEmpty()
     @IsEmail()

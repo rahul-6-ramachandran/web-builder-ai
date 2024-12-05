@@ -2,8 +2,9 @@ import {motion} from 'framer-motion'
 import { fadeIn } from '../variants'
 import { useState } from 'react'
 import { CreateUser } from '../../types.dto'
-import  Axios  from '../../config/axios'
 import { Link } from 'react-router-dom'
+import { signUp } from '../../actions/Auth/Auth'
+import { onError, onSuccess } from '../Notifications/Notify'
 
 export default function Signup(){
 
@@ -13,12 +14,24 @@ export default function Signup(){
     })
 
     const onChange = (e: any)=>{
-        setUser((prev)=>({...prev,[e.target.name]: [e.target.value]}))
+        setUser({...user,[e.target.name]: e.target.value})
     }
     
-    const handleSubmit = async()=>{
-       
+    const handleSubmit = async(e:any)=>{
+        e.preventDefault(); 
+        // console.log(user,"user")
+       await signUp(user)
+       .then((res)=>{
+        if(res?.userDetails){
+            onSuccess("Sign Up Successful")
+        }
+       })
+       .catch((err)=>{
+        onError("Something Went Wrong")
+        console.error(err.message)
+       })
     }
+
 return (
 <>
 
@@ -28,7 +41,7 @@ return (
 
 
 
-className='flex items-center mt-0 h-screen  bg-black '
+className='flex items-center mt-0 h-screen   '
 >
 
 <motion.div
@@ -73,7 +86,9 @@ viewport={{ once: false, amount: 0.7 }}
 
         <div className="mt-4">
             <label className="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200" htmlFor="LoggingEmailAddress">Email Address</label>
-            <input id="LoggingEmailAddress" className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300" 
+            <input
+            name="email"
+            id="LoggingEmailAddress" className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300" 
             type="email"
             onChange={onChange}
              
@@ -89,14 +104,15 @@ viewport={{ once: false, amount: 0.7 }}
 
             <input id="loggingPassword" className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300"
              type="password"
+             name='password'
              onChange={onChange}
 
               />
         </div>
 
         <div className="mt-6">
-            <button type='submit' className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-gray-800 rounded-lg hover:bg-gray-200 hover:text-black focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50">
-                Sign In
+            <button  className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-gray-800 rounded-lg hover:bg-gray-200 hover:text-black focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50">
+                Sign Up
             </button>
         </div>
         </form>

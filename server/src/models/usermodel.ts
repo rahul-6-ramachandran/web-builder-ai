@@ -22,6 +22,13 @@ export class UserModel{
 
     })
     uploads : string[]
+
+    @Prop({
+        required: false,
+        default:new Date()
+    })
+    createdAt: Date;
+
     // @Prop({
     //     required: false,
     //     type: [mongoose.Schema.Types.ObjectId],

@@ -2,9 +2,9 @@ import {motion} from 'framer-motion'
 import { fadeIn } from '../variants'
 import { useState } from 'react'
 import { CreateUser } from '../../types.dto'
-import  Axios  from '../../config/axios'
 import { Link } from 'react-router-dom'
 import { signIn, } from '../../actions/Auth/Auth'
+import { ToastContainer } from 'react-toastify'
 
 export default function Login(){
 
@@ -18,7 +18,7 @@ export default function Login(){
     }
     
     const handleSubmit = async()=>{
-       await signIn(user).then(res => console.log(res.data))
+       await signIn(user)
     }
 return (
 <>
@@ -29,9 +29,8 @@ return (
 
 
 
-className='flex items-center mt-0 h-screen  bg-black '
+className='flex items-center mt-0 h-screen   '
 >
-
 <motion.div
 variants={fadeIn("up", 0.3)}
 initial="hidden"

@@ -4,12 +4,18 @@ import { UserModelDocument, UserSchemaName } from 'src/models/usermodel';
 import { Model, ObjectId } from 'mongoose';
 import { UserDTO } from 'src/dto/user/userdto';
 
+import * as bcrypt from 'bcrypt'
+import { JwtService } from '@nestjs/jwt';
+
 
 @Injectable()
 export class AuthService {
   constructor(
     @InjectModel(UserSchemaName)
-    private readonly userModel : Model<UserModelDocument>
+    private readonly userModel : Model<UserModelDocument>,
+    
+    private readonly jwtService: JwtService
+
   ){}
 
   // Create New User
@@ -27,6 +33,26 @@ export class AuthService {
     return await this.userModel.findOne({email})
   }
 
+  // Login and jwt token
+  async generateJWT(user : any){
+    const payload = { email : user.email , user_id : user._id }
+    const token = this.jwtService.sign(payload)
+
+    return { 
+      access_token  : token 
+    }
+   
+  }
+
+
+  async hashPassword(plainPassword: string){
+    const saltRounds = 10
+    return bcrypt.hash(plainPassword,saltRounds)
+  }
+
+  async verifyPassword(plainPassword:string,hashedPassword: string){
+    return bcrypt.compare(plainPassword,hashedPassword)
+  }
 
   // update(id: number, updateUserDto: UpdateUserDto) {
   //   return `This action updates a #${id} auth`;

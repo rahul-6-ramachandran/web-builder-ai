@@ -1,13 +1,18 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, BadRequestException, NotFoundException } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, BadRequestException, NotFoundException, UnauthorizedException, Res, Req, UseGuards } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { isEmail,  } from 'class-validator';
 import { UserDTO } from 'src/dto/user/userdto';
 import { ObjectId } from 'mongoose';
+import { JwtService } from '@nestjs/jwt';
+import { AuthGuard } from '@nestjs/passport';
 
 
 @Controller('api/auth')
 export class AuthController {
-  constructor(private readonly authService: AuthService) {}
+  constructor(
+    private readonly authService: AuthService,
+
+  ) {}
 
 
 
@@ -18,20 +23,38 @@ export class AuthController {
   //  Body : email,password
   //  Params : None
 
+  
   @Post('signup')
   async createUser(@Body() createAuthDto: UserDTO) {
     try {
-      const {email} = createAuthDto
+      const {email,password} = createAuthDto
+     
       if(!isEmail(email)) 
         throw new BadRequestException("Email is not valid")
 
       const userData = await this.authService.getUser(email)
       if(userData){
         throw new BadRequestException("User Already Exists.!")
-      }else{
+      }
+      else{
+        
+        const hashedPassword = await this.authService.hashPassword(password)
+        createAuthDto.password = hashedPassword
+       
         const newUser = await this.authService.createNewUser(createAuthDto)
-        newUser.password = ''
-        return newUser
+        if(newUser){
+            // getting the token
+            const { access_token } =  await this.authService.generateJWT(newUser)
+
+          newUser.password = ''
+          return {
+            access_token : access_token,
+            userDetails : newUser
+          }
+        }else {
+          throw new NotFoundException('Something Went Wrong')
+        }
+       
       }
     } catch (error) {
       throw new NotFoundException({error: error.message})
@@ -48,25 +71,51 @@ export class AuthController {
   //  Params : None
 
   @Post('login')
-  async userLogin(@Body() createAuthDto: UserDTO) {
+  async userLogin(
+    @Body() checkAuthDto: UserDTO,
+  ) {
+
     try {
       
-      const {email} = createAuthDto
+      const {password , email} = checkAuthDto
+
+    
       if(!isEmail(email)) 
         throw new BadRequestException("Email is not valid")
 
+      // getting the user with email
       const userData = await this.authService.getUser(email)
+     
       if(!userData){
-        throw new BadRequestException("User Not Found")
-      }
-      userData.password = ''
-      return userData
+        throw new UnauthorizedException("User Not Found")
+      }else{
+        
+        // cross checking Passwords
+        const passCheck = await this.authService.verifyPassword(password,userData.password)
+        
+        if(!passCheck){
+          throw new UnauthorizedException("Password Incorrect")
+        }else {
 
+          // getting the token
+          const { access_token } =  await this.authService.generateJWT(userData)
+
+        userData.password = ''
+        return {
+          access_token : access_token, 
+          message : "Login Successfull",
+          userDetails : userData
+        }
+        }
+        
+        }
+      
     } catch (error) {
       throw new NotFoundException({error : error.message})
     }
     
   }
+
 
   // -----------------------------
 
@@ -77,6 +126,7 @@ export class AuthController {
   //  Body : None
   //  Params : userid
   
+  @UseGuards(AuthGuard('jwt'))
   @Get(':id')
   async getUser(@Param('id') id: string |  ObjectId) {
     return this.authService.getSpecificUser(id);
