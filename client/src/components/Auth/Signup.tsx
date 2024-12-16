@@ -2,16 +2,22 @@ import {motion} from 'framer-motion'
 import { fadeIn } from '../variants'
 import { useState } from 'react'
 import { CreateUser } from '../../types.dto'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { signUp } from '../../actions/Auth/Auth'
-import { onError, onSuccess } from '../Notifications/Notify'
+
+// @ts-ignore
+import { onError, onSuccess , onWarning } from '../Notifications/Notify'
 
 export default function Signup(){
 
+    const navigate = useNavigate()
     const [user,setUser] = useState<CreateUser>({
         email: '',
         password: ''
     })
+    const [error,setError] = useState('')
+
+   
 
     const onChange = (e: any)=>{
         setUser({...user,[e.target.name]: e.target.value})
@@ -19,16 +25,25 @@ export default function Signup(){
     
     const handleSubmit = async(e:any)=>{
         e.preventDefault(); 
+        if(user.password.length < 6){
+            setError("Password Must be 6 characters long")
+            return;
+        }
+        setError('')
         // console.log(user,"user")
        await signUp(user)
        .then((res)=>{
         if(res?.userDetails){
             onSuccess("Sign Up Successful")
+            setTimeout(()=>{
+                navigate('/dashboard')
+            },1000)
+            
         }
        })
        .catch((err)=>{
-        onError("Something Went Wrong")
-        console.error(err.message)
+        onError(err)
+        console.log(err.message)
        })
     }
 
@@ -90,6 +105,7 @@ viewport={{ once: false, amount: 0.7 }}
             name="email"
             id="LoggingEmailAddress" className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300" 
             type="email"
+            value={user.email}
             onChange={onChange}
              
             
@@ -105,9 +121,13 @@ viewport={{ once: false, amount: 0.7 }}
             <input id="loggingPassword" className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300"
              type="password"
              name='password'
+             value={user.password}
              onChange={onChange}
 
               />
+               {error && (
+  <span className="text-sm text-red-500 mt-1">{error}</span>
+)}
         </div>
 
         <div className="mt-6">

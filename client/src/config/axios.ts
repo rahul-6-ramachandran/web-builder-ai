@@ -1,5 +1,7 @@
 import axios, { AxiosInstance } from "axios";
 
+// @ts-ignore
+import { onError } from '../components/Notifications/Notify'
 
 // Connecting backend server using axios axios
 const Axios: AxiosInstance = axios.create({
@@ -23,5 +25,14 @@ Axios.interceptors.request.use((config)=>{
    }
 
 })
+
+// Axios.interceptors.response.use(
+//    response => response,
+//    error => {
+//      const message = error.response?.data?.message || 'An error occurred';
+//      onError(message); // Show toast
+//      return Promise.reject(error);
+//    },
+//  );
 
 export default Axios;

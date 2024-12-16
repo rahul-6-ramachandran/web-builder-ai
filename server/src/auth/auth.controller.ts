@@ -119,6 +119,15 @@ export class AuthController {
 
   // -----------------------------
 
+
+   
+  //  -----  User Details Api -----
+  //  Method : POST
+  //  Endpoint : api/auth/:id
+  //  Body : None
+  //  Params : userid
+
+  @Post('logout')
    
   //  -----  User Details Api -----
   //  Method : POST

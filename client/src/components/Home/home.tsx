@@ -8,7 +8,7 @@ import PricingCard from '../Pricing/PricingCard'
 export default function Home() {
 
 
- 
+
     return (
         <>
             <NavBar />
@@ -149,57 +149,57 @@ export default function Home() {
                 </div>
             </section>
 
-            <section id='pricing'  className=' bg-black jumbotron p-4 n'>
+            <section id='pricing' className=' bg-black jumbotron lg:p-4  n hidden lg:flex '>
 
 
-            <div className='flex gap-4 justify-between md:p-10 h-screen mt-24'>
-           <motion.div  
-           className='w-full lg:p-10'
-           variants={fadeIn("down", 0.3)}
-           initial="hidden"
-           whileInView={"show"}
-           viewport={{ once: false, amount: 0.3 }}
-           
-           >
-             <PricingCard caption={'Standard Plan'} price={50} features={  ['hellooo','hai','test']}  notAllowed={['Sketch Files','Complete documentation','24×7 phone & email support']}/> 
-           </motion.div>
+                <div className='flex flex-col lg:flex-row lg:gap-4 gap-1  justify-between lg:p-10 h-screen mt-24'>
+                    <motion.div
+                        className='w-full lg:p-10'
+                        variants={fadeIn("down", 0.3)}
+                        initial="hidden"
+                        whileInView={"show"}
+                        viewport={{ once: false, amount: 0.3 }}
 
-           <motion.div  
-           className='w-full lg:p-10'
-           variants={fadeIn("down", 0.2)}
-           initial="hidden"
-           whileInView={"show"}
-           viewport={{ once: false, amount: 0.3 }}
-           
-           >
-             <PricingCard  caption={'Premium'} price={144} features={  ['hellooo','hai','test']}  notAllowed={['Sketch Files','Complete documentation','24×7 phone & email support']}/> 
-           </motion.div>
+                    >
+                        <PricingCard caption={'Standard Plan'} price={50} features={['hellooo', 'hai', 'test']} notAllowed={['Sketch Files', 'Complete documentation', '24×7 phone & email support']} />
+                    </motion.div>
 
-           <motion.div  
-           className='w-full lg:p-10'
-           variants={fadeIn("down", 0.2)}
-           initial="hidden"
-           whileInView={"show"}
-           viewport={{ once: false, amount: 0.3 }}
-           
-           >
-             <PricingCard  caption={'Standard Plan'} price={250} features={  ['hellooo','hai','test1']}  notAllowed={['Sketch Files','Complete documentation','24×7 phone & email support']}/> 
-           </motion.div>
+                    <motion.div
+                        className='w-full lg:p-10'
+                        variants={fadeIn("down", 0.2)}
+                        initial="hidden"
+                        whileInView={"show"}
+                        viewport={{ once: false, amount: 0.3 }}
 
-           <motion.div  
-           className='w-full lg:p-10'
-           variants={fadeIn("down", 0.2)}
-           initial="hidden"
-           whileInView={"show"}
-           viewport={{ once: false, amount: 0.3 }}
-           
-           >
-             <PricingCard  caption={'Standard Plan'} price={500} features={  ['hellooo','hai','test2']}  notAllowed={['Sketch Files','Complete documentation','24×7 phone & email support']}/> 
-           </motion.div>
+                    >
+                        <PricingCard caption={'Premium'} price={144} features={['hellooo', 'hai', 'test']} notAllowed={['Sketch Files', 'Complete documentation', '24×7 phone & email support']} />
+                    </motion.div>
 
-           
-            </div>
-               
+                    <motion.div
+                        className='w-full lg:p-10'
+                        variants={fadeIn("down", 0.2)}
+                        initial="hidden"
+                        whileInView={"show"}
+                        viewport={{ once: false, amount: 0.3 }}
+
+                    >
+                        <PricingCard caption={'Standard Plan'} price={250} features={['hellooo', 'hai', 'test1']} notAllowed={['Sketch Files', 'Complete documentation', '24×7 phone & email support']} />
+                    </motion.div>
+
+                    <motion.div
+                        className='w-full lg:p-10'
+                        variants={fadeIn("down", 0.2)}
+                        initial="hidden"
+                        whileInView={"show"}
+                        viewport={{ once: false, amount: 0.3 }}
+
+                    >
+                        <PricingCard caption={'Standard Plan'} price={500} features={['hellooo', 'hai', 'test2']} notAllowed={['Sketch Files', 'Complete documentation', '24×7 phone & email support']} />
+                    </motion.div>
+
+
+                </div>
+
 
             </section>
 

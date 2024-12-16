@@ -6,14 +6,18 @@ import Home from './components/Home/home'
 // import NavBar from './components/Navbar/NavBar'
 import Login from './components/Auth/Login'
 import Signup from './components/Auth/Signup'
+import 'react-toastify/dist/ReactToastify.css'
 import { ToastContainer } from 'react-toastify'
+import Userdashboard from './components/Dashboard/UserDashboard'
 
 function App() {
  
   return (
     <>
-     
-     {/* <ToastContainer/> */}
+     <div className='App'>
+
+   
+     <ToastContainer />
 
    <Router>
     
@@ -24,10 +28,10 @@ function App() {
         <Route path="/login" element={<Login/>} />
         <Route path="/signup" element={<Signup/>} />
         {/* <Route path="/login" element={<Signup/>} /> */}
-
+        <Route path='/dashboard' element={<Userdashboard/>}/>
       </Routes>
     </Router>
-    
+    </div>
     </>
   )
 }

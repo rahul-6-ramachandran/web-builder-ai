@@ -2,23 +2,52 @@ import {motion} from 'framer-motion'
 import { fadeIn } from '../variants'
 import { useState } from 'react'
 import { CreateUser } from '../../types.dto'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { signIn, } from '../../actions/Auth/Auth'
-import { ToastContainer } from 'react-toastify'
+
+// @ts-ignore
+import { onError, onSuccess } from '../Notifications/Notify'
 
 export default function Login(){
+    
+    const navigate = useNavigate()
 
     const [user,setUser] = useState<CreateUser>({
         email: '',
         password: ''
     })
+    const [error,setError] = useState('') 
 
-    const onChange = (e: any)=>{
-        setUser((prev)=>({...prev,[e.target.name]: [e.target.value]}))
+    const onChange = (e: React.ChangeEvent<HTMLInputElement>)=>{
+        setUser({ ...user, [e.target.name]: e.target.value });
     }
     
-    const handleSubmit = async()=>{
-       await signIn(user)
+    const handleSubmit = async(e:any)=>{
+        e.preventDefault()
+        // console.log(user,"uswe")
+        if(user.password.length < 6){
+            setError("Password Must be 6 characters long")
+            return;
+        }
+        setError("")
+        try {
+            
+            const res= await signIn(user)
+            if(res?.userDetails){
+                onSuccess("Login Successful")
+                navigate('/dashboard')
+                }
+        
+           
+
+        } catch (error:any) {
+            onError("Something Went Wrong")
+            console.error(error.message);
+        }
+            
+           
+        
+       
     }
 return (
 <>
@@ -47,7 +76,7 @@ viewport={{ once: false, amount: 0.7 }}
         <p className="mt-3 text-xl text-center text-gray-600 dark:text-gray-200">
             Welcome back!
         </p>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={ handleSubmit}>
 
         <a href="#" className="flex items-center justify-center mt-4 text-gray-600 transition-colors duration-300 transform border rounded-lg dark:border-gray-700 dark:text-gray-200 hover:bg-gray-50 hover:bg-gray-200 hover:text-black">
             <div className="px-4 py-2">
@@ -76,6 +105,8 @@ viewport={{ once: false, amount: 0.7 }}
             <input id="LoggingEmailAddress" className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300" 
             type="email"
             onChange={onChange}
+            value={user.email}
+            name='email'
              
             
             />
@@ -89,9 +120,13 @@ viewport={{ once: false, amount: 0.7 }}
 
             <input id="loggingPassword" className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300"
              type="password"
+             value={user.password}
              onChange={onChange}
-
+             name='password'
               />
+                {error && (
+  <span className="text-sm text-red-500 mt-1">{error}</span>
+)}
         </div>
 
         <div className="mt-6">

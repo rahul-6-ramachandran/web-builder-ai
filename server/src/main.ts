@@ -3,6 +3,7 @@ import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { ValidationPipe } from '@nestjs/common';
 import * as cookieParser from 'cookie-parser'
+import { HttpExceptionFilter } from './errorhandle';
 
 
 async function bootstrap() {
@@ -15,6 +16,8 @@ async function bootstrap() {
       transform:true
     })
   )
+
+  app.useGlobalFilters(new HttpExceptionFilter());
 
   app.use(cookieParser())
 
