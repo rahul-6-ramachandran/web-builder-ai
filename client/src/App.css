@@ -3,3 +3,13 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+body, html {
+    height: 100%; /* Ensure the body takes up the full height of the viewport */
+    overflow: auto; /* Allow scrolling if needed */
+  }
+
+  .scrollbar-hidden::-webkit-scrollbar {
+    display: none; /* For Chrome, Safari, and Edge */
+  }
+  

@@ -35,7 +35,7 @@ export default function Login(){
             const res= await signIn(user)
             if(res?.userDetails){
                 onSuccess("Login Successful")
-                navigate('/dashboard')
+               navigate(`/dashboard/${res.userDetails._id}`)
                 }
         
            

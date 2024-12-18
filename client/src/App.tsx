@@ -9,6 +9,8 @@ import Signup from './components/Auth/Signup'
 import 'react-toastify/dist/ReactToastify.css'
 import { ToastContainer } from 'react-toastify'
 import Userdashboard from './components/Dashboard/UserDashboard'
+import Dashboard from './components/Layouts/DashboardLayout'
+import Projects from './components/Dashboard/Projects/Projects'
 
 function App() {
  
@@ -28,7 +30,16 @@ function App() {
         <Route path="/login" element={<Login/>} />
         <Route path="/signup" element={<Signup/>} />
         {/* <Route path="/login" element={<Signup/>} /> */}
-        <Route path='/dashboard' element={<Userdashboard/>}/>
+
+
+
+        <Route path='/dashboard/:id' element={<Dashboard/>}>
+          
+            <Route index element={<Userdashboard/>}/>
+            <Route  path='projects' element={<Projects/>}/>
+        </Route>  
+        {/* <Route path=''/> */}
+        {/* </Route> */}
       </Routes>
     </Router>
     </div>

@@ -35,8 +35,9 @@ export default function Signup(){
        .then((res)=>{
         if(res?.userDetails){
             onSuccess("Sign Up Successful")
+            console.log(res)
             setTimeout(()=>{
-                navigate('/dashboard')
+                navigate(`/dashboard/${res.userDetails.user_id}`)
             },1000)
             
         }
