@@ -40,14 +40,18 @@ export const signUp = async(user : CreateUser)=>{
     } catch (error) {
         const err = error as AxiosError;
 
-    const serverError =
-    err.response?.data?.message ||
-    'An unexpected error occurred';
-    
-    console.error('Sign Up Error:', serverError);
-
+        if(err.response?.data){
+            const serverError =
+            err.response?.data||
+            'An unexpected error occurred';
+            console.error('Sign Up Error:', serverError);
+            onError(serverError);
+            
+        }
+   
+   
  
-    onError(serverError);
+   
 
     return {
     //   error: serverError,

@@ -12,7 +12,7 @@ export default function Dashboard() {
                 <NavBar />
                 <div className="flex flex-col gap-3 px-4 bg-black overflow-auto">
 
-                    <div className="h-full bg-black w-1/6   py-5  fixed w-full left-0 z-40   text-white  flex flex-row items-center  ">
+                    <div className="h-full bg-black w-1/6   py-5  fixed  left-0 z-40   text-white  flex flex-row items-center  ">
 
 
                         <Sidebar />

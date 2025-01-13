@@ -11,6 +11,11 @@ export default function Sidebar(){
 
    <div className="h-full w-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-black">
       <ul className="space-y-2 font-medium">
+      <li>
+            <Link to="/projects" className="flex items-center text-center justify-center p-2 text-gray-900 rounded-lg md:hover:text-blue-700  bg-blue-700 md:dark:hover:text-blue-500 dark:text-gray-100 hover:bg-blue-800 dark:hover:bg-blue-800 group">
+            <button className="flex mx-4 justify-center w-full">Create A Design +</button>
+            </Link>
+         </li>
          <li>
             <Link to="/projects" className="flex items-center p-2 text-gray-900 rounded-lg md:hover:text-blue-700  md:dark:hover:text-blue-500 dark:text-white hover:bg-zinc-800 dark:hover:bg-gray-800 group">
             <svg fill="#9CA3AF" className="w-5 h-5 text-2xl text-gray-900 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" width="800px" height="800px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M3,20V10H8V21H4A1,1,0,0,1,3,20ZM21,4a1,1,0,0,0-1-1H4A1,1,0,0,0,3,4V8H21ZM20,21a1,1,0,0,0,1-1V10H10V21Z"/></svg>
@@ -20,8 +25,8 @@ export default function Sidebar(){
          <li>
             <Link to="/live" className="flex items-center p-2 text-gray-900 rounded-lg  md:hover:text-blue-700  md:dark:hover:text-blue-500 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800 group">
                
-               <svg fill="#9CA3AF" className="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400  group-hover:text-gray-900 dark:group-hover:text-white"  height="800px" width="800px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
-	 viewBox="0 0 472.615 472.615" xml:space="preserve">
+               <svg fill="#9CA3AF" className="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400  group-hover:text-gray-900 dark:group-hover:text-white"  height="800px" width="800px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" 
+	 viewBox="0 0 472.615 472.615" xmlSpace="preserve">
 <g>
 	<g>
 		<path d="M246.164,10.516v117.458c29.941-1.279,58.783-8.32,85.349-20.641C312.004,53.742,280.997,16.496,246.164,10.516z"/>

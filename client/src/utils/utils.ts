@@ -1,4 +1,4 @@
-export  function decodeJWT(token){
+export  function decodeJWT(token:any){
     try {
         
         const base64Payload = token.split('.')[1]

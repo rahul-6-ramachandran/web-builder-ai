@@ -18,7 +18,7 @@ export default function Userdashboard() {
                 </div>
                     <Prompt />
                    <div className="w-full text-start">
-                   <h4 className="mb-3 text-3xl font-bold tracking-tight text-gray-900 dark:text-white">Recommended</h4>
+                   <h4 className="mb-3 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">Recommended</h4>
                    </div>
                     <div className=" flex gap-3 px-3">
                         
