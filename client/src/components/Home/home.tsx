@@ -42,7 +42,7 @@ export default function Home() {
                         viewport={{ once: false, amount: 0.3 }}
 
                         className="w-full h-full flex  mx-0 items-end text-end justify-center px-0 px-5">
-                        <img className="w-4/5 h-4/5 p-2" src="public\images\445285-PF189N-685-Photoroom.png" alt="" />
+                        <img className="w-4/5 h-4/5 p-2" src="/images/445285-PF189N-685-Photoroom.png" alt="" />
                     </motion.div>
                 </div>
             </div>
