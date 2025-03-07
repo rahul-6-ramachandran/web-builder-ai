@@ -6,3 +6,209 @@ body, html {
     height: 100%; /* Ensure the body takes up the full height of the viewport */
     overflow: auto; /* Allow scrolling if needed */
   }
+/* 
+  .gjs-cv-canvas {
+    background-color: white !important;
+  } */
+
+
+  #gjs {
+    background: linear-gradient(to right, #1e3a8a, #111827, #0f172a) !important;
+    color: white; /* Ensures text is visible */
+  }
+
+  .gjs-one-bg {
+    background: linear-gradient(to right, #1e3a8a, #111827, #0f172a)  !important
+}
+
+
+  /* .gjs-editor {
+    background: linear-gradient(to right, #1e3a8a, #111827, #0f172a) !important;
+  } */
+
+  .gjs-pn-top {
+    background: linear-gradient(to right, #1e3a8a, #111827, #0f172a) !important;
+  }
+  
+  /* ✅ Ensure inner elements blend well */
+  .gjs-pn-buttons {
+    background: transparent !important;
+  }
+  
+  /* ✅ Change text/icons color for better visibility */
+  .gjs-pn-buttons button, 
+  .gjs-pn-buttons svg, 
+  .gjs-pn-btn {
+    color: white !important;
+    fill: white !important;
+  }
+  
+  /* ✅ Change hover effect for buttons in top panel */
+  .gjs-pn-buttons button:hover, 
+  .gjs-pn-buttons .gjs-pn-btn:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+  }
+  .gjs-pn-options{
+    background: linear-gradient(to right, #1e3a8a, #111827, #0f172a) !important;
+    color: white !important;
+    }
+    
+     
+.gjs-pn-top, 
+.gjs-pn-views, 
+.gjs-sm-sectors, 
+.gjs-layers, 
+.gjs-trt-traits, 
+.gjs-block-category {
+  background: linear-gradient(to right, #1e3a8a, #111827, #0f172a) !important;
+}
+ .gjs-pn-views, .gjs-pn-options {
+    background: linear-gradient(to right, #0f172a) !important;
+   
+    transition : background 0.3s ease-in-out;
+    
+  }
+
+  .gjs-pn-views-container {
+    background: linear-gradient(to right, #1e3a8a, #111827, #0f172a) !important;
+  }
+  .gjs-sm-sectors, .gjs-trt-traits, .gjs-layers,.gjs-layers-container , .gjs-block-category {
+    background: linear-gradient(to right, #1e3a8a, #111827, #0f172a) !important;
+    color: white !important;
+  }
+
+  
+  /* ✅ Change Style Manager (Brush Icon Panel) background */
+.gjs-sm-sectors {
+  background: linear-gradient(to right, #1e3a8a, #111827, #0f172a) !important;
+}
+
+/* ✅ Change the section headers inside the Style Manager */
+.gjs-sm-sector-title {
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: white !important;
+}
+
+/* ✅ Style individual properties inside the Style Manager */
+.gjs-sm-property {
+  background: transparent !important;
+  color: white !important;
+}
+
+/* ✅ Change input fields inside Style Manager */
+.gjs-sm-input {
+  background: rgba(0, 0, 0, 0.2) !important;
+  color: white !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+}
+
+/* ✅ Change background of the "Classes" section */
+.gjs-clm-tags {
+  background: linear-gradient(to right, #1e3a8a, #111827, #0f172a) !important;
+  color: white !important;
+}
+
+/* ✅ Style the text inside the classes section */
+.gjs-clm-tag {
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: white !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+}
+
+/* ✅ Change the hover effect of class tags */
+.gjs-clm-tag:hover {
+  background: rgba(255, 255, 255, 0.2) !important;
+}
+
+/* ✅ Change input field where users type class names */
+.gjs-clm-new {
+  background: rgba(0, 0, 0, 0.2) !important;
+  color: white !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+}
+
+  
+  /* ✅ Apply gradient background to all blocks */
+.gjs-block {
+  background: linear-gradient(to right, #1e3a8a, #111827, #0f172a) !important;
+  color: white !important; /* Ensure text is readable */
+  border-radius: 8px;
+  padding: 10px;
+  transition: background 0.3s ease-in-out;
+}
+
+/* ✅ Hover effect (Grey background) */
+.gjs-block:hover {
+  background: #374151 !important; /* Tailwind Gray-700 */
+}
+
+  /* Change panel button colors */
+  .gjs-pn-btn {
+    /* background-color: #2563eb !important; Blue-600 */
+    color: white !important;
+    border-radius: 6px;
+  }
+  
+  /* Change active button color */
+  .gjs-pn-btn.gjs-pn-active {
+    background-color: #1e40af !important; /* Blue-700 */
+    color: #ffffff !important;
+  }
+  
+  /* Change panel titles */
+  .gjs-pn-title {
+    color: white !important;
+  }
+  
+  /* Change icons color */
+  .gjs-pn-btn svg {
+    fill: white !important;
+  }
+  
+  /* Sidebar panels */
+  .gjs-pn-panels:hover {
+    background: #1f2937 !important; /* Tailwind Gray-800 */
+  }
+
+  /* ✅ Style Component Categories Panel */
+.gjs-cv-categories {
+  background: linear-gradient(to right, #1e3a8a, #111827, #0f172a) !important;
+  color: white !important;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+/* ✅ Style individual component categories */
+.gjs-title {
+  background: #1e293b !important; /* Darker Navy Blue */
+  color: white !important;
+  padding: 5px 10px;
+  border-radius: 6px;
+  margin-bottom: 5px;
+}
+
+/* ✅ Hover effect on categories */
+.gjs-title:hover {
+  background: #374151 !important; /* Tailwind Gray-700 */
+}
+
+/* ✅ Style Layers Panel */
+.gjs-layer {
+  background: linear-gradient(to right, #1e3a8a, #111827, #0f172a) !important;
+  color: white !important;
+  padding: 8px;
+  border-radius: 6px;
+}
+
+/* ✅ Hover effect for layers */
+.gjs-layer:hover {
+  background: #374151 !important; /* Tailwind Gray-700 */
+}
+
+/* ✅ Optional: Style the Style Manager (If you want to customize it too) */
+.gjs-sm-sector {
+  background: linear-gradient(to right, #1e3a8a, #111827, #0f172a) !important;
+  color: white !important;
+  border-radius: 8px;
+  padding: 10px;
+}

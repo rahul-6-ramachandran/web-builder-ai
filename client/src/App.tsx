@@ -12,6 +12,8 @@ import Userdashboard from './components/Dashboard/UserDashboard'
 import Dashboard from './components/Layouts/DashboardLayout'
 import Projects from './components/Dashboard/Projects/Projects'
 
+import EditorLayout from './components/Layouts/EditorLayout'
+
 function App() {
  
   return (
@@ -33,11 +35,17 @@ function App() {
 
 
 
-        <Route path='/dashboard/:id' element={<Dashboard/>}>
+        <Route path='/:id' element={<Dashboard/>}>
           
             <Route index element={<Userdashboard/>}/>
             <Route  path='projects' element={<Projects/>}/>
+            
         </Route>  
+
+
+        <Route  path='editor/:id' element={<EditorLayout/>}/>
+        
+       
         {/* <Route path=''/> */}
         {/* </Route> */}
       </Routes>

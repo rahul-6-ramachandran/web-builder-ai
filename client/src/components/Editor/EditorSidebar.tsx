@@ -1,6 +1,6 @@
 import { Link, useParams } from "react-router-dom";
 
-export default function Sidebar(){
+export default function EditorSidebar(){
 	const {id} = useParams()
     return(
         <>
@@ -11,19 +11,20 @@ export default function Sidebar(){
 
 
    <div className="h-full w-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-black">
-      <ul className="space-y-2 font-medium">
-      <li>
-            <Link to={`/editor/${id}`} className="flex items-center text-center justify-center p-2 text-gray-900 rounded-lg md:hover:text-blue-700  bg-blue-700 md:dark:hover:text-blue-500 dark:text-gray-100 hover:bg-blue-800 dark:hover:bg-blue-800 group">
-            <button className="flex mx-4 justify-center w-full">Create A Design +</button>
+      <ul className="space-y-2 font-medium py-3">
+      <li className="space-y-2 font-medium py-3">
+            <Link to={`/${id}`} className="flex items-center p-2 text-gray-900 rounded-lg md:hover:text-blue-700  md:dark:hover:text-blue-500 dark:text-white hover:bg-zinc-800 dark:hover:bg-gray-800 group">
+<i className="fa fa-home"> </i>
             </Link>
          </li>
-         <li>
+
+         <li className="space-y-2 font-medium py-3">
             <Link to={`/${id}/projects`} className="flex items-center p-2 text-gray-900 rounded-lg md:hover:text-blue-700  md:dark:hover:text-blue-500 dark:text-white hover:bg-zinc-800 dark:hover:bg-gray-800 group">
             <svg fill="#9CA3AF" className="w-5 h-5 text-2xl text-gray-900 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" width="800px" height="800px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M3,20V10H8V21H4A1,1,0,0,1,3,20ZM21,4a1,1,0,0,0-1-1H4A1,1,0,0,0,3,4V8H21ZM20,21a1,1,0,0,0,1-1V10H10V21Z"/></svg>
-               <span className="ms-3 ">Projects</span>
+              
             </Link>
          </li>
-         <li>
+         <li className="space-y-2 font-medium py-3">
             <Link to="/live" className="flex items-center p-2 text-gray-900 rounded-lg  md:hover:text-blue-700  md:dark:hover:text-blue-500 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800 group">
                
                <svg fill="#9CA3AF" className="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400  group-hover:text-gray-900 dark:group-hover:text-white"  height="800px" width="800px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" 
@@ -121,11 +122,11 @@ export default function Sidebar(){
 	</g>
 </g>
 </svg>
-               <span className="flex-1 ms-3 whitespace-nowrap">Live</span>
-               <span className="inline-flex items-center justify-center px-2 ms-3 text-sm font-medium text-gray-800 bg-gray-100 rounded-full dark:bg-gray-700 dark:text-gray-300">Pro</span>
+
+              
             </Link>
          </li>
-         <li>
+         <li className="space-y-2 font-medium py-3">
             <Link to="/templates" className="flex items-center  md:hover:text-blue-700  md:dark:hover:text-blue-500 p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800 group">
               
                <svg fill="#9CA3AF" className="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" 
@@ -141,11 +142,11 @@ export default function Sidebar(){
 	</g>
 </g>
 </svg>
-               <span className="flex-1 ms-3 whitespace-nowrap">Templates</span>
-               <span className="inline-flex items-center justify-center w-3 h-3 p-3 ms-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">3</span>
+
+
             </Link>
          </li>
-         <li>
+         <li className="space-y-2 font-medium py-3">
             <Link to="/pricing" className="flex items-center  md:hover:text-blue-700  md:dark:hover:text-blue-500 p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800 group">
                
                <svg width="800px" className="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -157,25 +158,25 @@ export default function Sidebar(){
 <g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M12.052 1.25H11.948C11.0495 1.24997 10.3003 1.24995 9.70552 1.32991C9.07773 1.41432 8.51093 1.59999 8.05546 2.05546C7.59999 2.51093 7.41432 3.07773 7.32991 3.70552C7.27259 4.13189 7.25637 5.15147 7.25179 6.02566C5.22954 6.09171 4.01536 6.32778 3.17157 7.17157C2 8.34315 2 10.2288 2 14C2 17.7712 2 19.6569 3.17157 20.8284C4.34314 22 6.22876 22 9.99998 22H14C17.7712 22 19.6569 22 20.8284 20.8284C22 19.6569 22 17.7712 22 14C22 10.2288 22 8.34315 20.8284 7.17157C19.9846 6.32778 18.7705 6.09171 16.7482 6.02566C16.7436 5.15147 16.7274 4.13189 16.6701 3.70552C16.5857 3.07773 16.4 2.51093 15.9445 2.05546C15.4891 1.59999 14.9223 1.41432 14.2945 1.32991C13.6997 1.24995 12.9505 1.24997 12.052 1.25ZM15.2479 6.00188C15.2434 5.15523 15.229 4.24407 15.1835 3.9054C15.1214 3.44393 15.0142 3.24644 14.8839 3.11612C14.7536 2.9858 14.5561 2.87858 14.0946 2.81654C13.6116 2.7516 12.964 2.75 12 2.75C11.036 2.75 10.3884 2.7516 9.90539 2.81654C9.44393 2.87858 9.24644 2.9858 9.11612 3.11612C8.9858 3.24644 8.87858 3.44393 8.81654 3.9054C8.771 4.24407 8.75661 5.15523 8.75208 6.00188C9.1435 6 9.55885 6 10 6H14C14.4412 6 14.8565 6 15.2479 6.00188ZM12 9.25C12.4142 9.25 12.75 9.58579 12.75 10V10.0102C13.8388 10.2845 14.75 11.143 14.75 12.3333C14.75 12.7475 14.4142 13.0833 14 13.0833C13.5858 13.0833 13.25 12.7475 13.25 12.3333C13.25 11.9493 12.8242 11.4167 12 11.4167C11.1758 11.4167 10.75 11.9493 10.75 12.3333C10.75 12.7174 11.1758 13.25 12 13.25C13.3849 13.25 14.75 14.2098 14.75 15.6667C14.75 16.857 13.8388 17.7155 12.75 17.9898V18C12.75 18.4142 12.4142 18.75 12 18.75C11.5858 18.75 11.25 18.4142 11.25 18V17.9898C10.1612 17.7155 9.25 16.857 9.25 15.6667C9.25 15.2525 9.58579 14.9167 10 14.9167C10.4142 14.9167 10.75 15.2525 10.75 15.6667C10.75 16.0507 11.1758 16.5833 12 16.5833C12.8242 16.5833 13.25 16.0507 13.25 15.6667C13.25 15.2826 12.8242 14.75 12 14.75C10.6151 14.75 9.25 13.7903 9.25 12.3333C9.25 11.143 10.1612 10.2845 11.25 10.0102V10C11.25 9.58579 11.5858 9.25 12 9.25Z" fill="#9CA3AF"/> </g>
 
 </svg>
-               <span className="flex-1 ms-3 whitespace-nowrap">Pricing</span>
+
             </Link>
          </li>
-         <li>
+         <li className="space-y-2 font-medium py-3">
             <Link to="/products" className="flex items-center  md:hover:text-blue-700  md:dark:hover:text-blue-500 p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800 group">
                <svg className="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 20">
                   <path d="M17 5.923A1 1 0 0 0 16 5h-3V4a4 4 0 1 0-8 0v1H2a1 1 0 0 0-1 .923L.086 17.846A2 2 0 0 0 2.08 20h13.84a2 2 0 0 0 1.994-2.153L17 5.923ZM7 9a1 1 0 0 1-2 0V7h2v2Zm0-5a2 2 0 1 1 4 0v1H7V4Zm6 5a1 1 0 1 1-2 0V7h2v2Z"/>
                </svg>
-               <span className="flex-1 ms-3 whitespace-nowrap">Products</span>
+
             </Link>
          </li>
-         <li>
+         {/* <li>
             <Link to="#" className="flex items-center p-2 text-gray-900  md:hover:text-red-700  md:dark:hover:text-red-500 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800 group">
                <svg className="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 16">
                   <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 8h11m0 0L8 4m4 4-4 4m4-11h3a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-3"/>
                </svg>
                <span className="flex-1 ms-3 whitespace-nowrap">Log Out</span>
             </Link>
-         </li>
+         </li> */}
          {/* <li>
             <Link to="#" className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800 group">
                <svg className="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">

@@ -127,7 +127,10 @@ export class AuthController {
   //  Body : None
   //  Params : userid
 
-  @Post('logout')
+  // @Post('logout')
+  // async logout(){
+
+  // }
    
   //  -----  User Details Api -----
   //  Method : POST
