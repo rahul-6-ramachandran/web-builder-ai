@@ -79,4 +79,9 @@ Start the server
 ```bash
   node index
 ```
+## Screenshots
+
+####Landing Page
+
+![Untitled design (2)](https://github.com/user-attachments/assets/3d20c432-b0ef-4d90-bb0e-67364ce0e9d6)
 
