@@ -4,18 +4,26 @@
 
 ## Tech Stack
 
-**Client:** React, Material UI , Headless UI, Tailwind CSS
+**Client:** React, Tailwind CSS, Grapes.js, Framer Motion
 
-**Server:** Node, Express , MongoDB
+**Server:** Node, Nest.js , MongoDB
 
 
 ## Features
 
 - Login/Signup
-- Users can Upload & save their pdf files in the Server
+- Users can Access the Dashboard and Website Builder
 - Jwt authentication
-- Users can extract pages they need  and download the new pdf file
 - Simple attractive and powerful UI
+
+  ## Upcoming Features
+  
+  - Web Page Storing
+  - Editable Web-Page Templates
+  - User access restriction
+  - Project Dashboard
+  - Hosting Facility
+  - AI Prompt features
 
 
 ## Environment Variables
