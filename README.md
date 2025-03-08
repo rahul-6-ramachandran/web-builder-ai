@@ -42,7 +42,7 @@ To run this project, you will need to add the following environment variables to
 Clone the project
 
 ```bash
-  git clone (https://github.com/rahul-6-ramachandran/Pdf-Editor.git)
+  git clone (https://github.com/rahul-6-ramachandran/web-builder-ai.git)
 ```
 
 Go to the client directory
