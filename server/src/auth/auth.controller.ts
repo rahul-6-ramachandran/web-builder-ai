@@ -5,13 +5,14 @@ import { UserDTO } from 'src/dto/user/userdto';
 import { ObjectId } from 'mongoose';
 import { JwtService } from '@nestjs/jwt';
 import { AuthGuard } from '@nestjs/passport';
+import { UserService } from 'src/user/user.service';
 
 
 @Controller('api/auth')
 export class AuthController {
   constructor(
     private readonly authService: AuthService,
-
+    private readonly userService : UserService
   ) {}
 
 
@@ -41,7 +42,7 @@ export class AuthController {
         const hashedPassword = await this.authService.hashPassword(password)
         createAuthDto.password = hashedPassword
        
-        const newUser = await this.authService.createNewUser(createAuthDto)
+        const newUser = await this.userService.createNewUser(createAuthDto)
         if(newUser){
             // getting the token
             const { access_token } =  await this.authService.generateJWT(newUser)
@@ -132,17 +133,7 @@ export class AuthController {
 
   // }
    
-  //  -----  User Details Api -----
-  //  Method : POST
-  //  Endpoint : api/auth/:id
-  //  Body : None
-  //  Params : userid
   
-  @UseGuards(AuthGuard('jwt'))
-  @Get(':id')
-  async getUser(@Param('id') id: string |  ObjectId) {
-    return this.authService.getSpecificUser(id);
-  }
 
     // -----------------------------
 

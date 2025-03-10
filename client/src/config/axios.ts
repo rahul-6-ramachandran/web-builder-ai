@@ -26,13 +26,13 @@ Axios.interceptors.request.use((config)=>{
 
 })
 
-// Axios.interceptors.response.use(
-//    response => response,
-//    error => {
-//      const message = error.response?.data?.message || 'An error occurred';
-//      onError(message); // Show toast
-//      return Promise.reject(error);
-//    },
-//  );
+Axios.interceptors.response.use(
+   response => response,
+   error => {
+     const message = error.response?.data?.message || 'An error occurred';
+     onError(message); // Show toast
+     return Promise.reject(error);
+   },
+ );
 
 export default Axios;
