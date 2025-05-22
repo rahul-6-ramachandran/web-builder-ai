@@ -32,6 +32,8 @@ export class UserController {
     return this.userService.getSpecificUser(id);
   }
 
+  
+
   @Get()
   findAll() {
     return this.userService.findAll();
