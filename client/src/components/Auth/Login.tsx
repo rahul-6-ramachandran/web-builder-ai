@@ -40,6 +40,7 @@ export default function Login(){
             const res= await signIn(user)
             if(res?.userDetails){
                 onSuccess("Login Successful")
+                setLoading(false)
                navigate(`/${res.userDetails._id}`)
                 }
         
@@ -47,6 +48,7 @@ export default function Login(){
 
         } catch (error:any) {
             onError("Something Went Wrong")
+            setLoading(false)
             console.error(error.message);
         }
             
