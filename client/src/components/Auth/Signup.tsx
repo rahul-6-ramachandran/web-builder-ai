@@ -39,7 +39,7 @@ export default function Signup(){
             onSuccess("Sign Up Successful")
             console.log(res)
             setTimeout(()=>{
-                navigate(`/dashboard/${res.userDetails.user_id}`)
+                navigate(`/dashboard/${res.userDetails._id}`)
             },1000)
             
         }
