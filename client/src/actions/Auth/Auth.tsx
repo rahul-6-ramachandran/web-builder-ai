@@ -33,7 +33,7 @@ export const signIn = async(user : CreateUser)=>{
 export const signUp = async(user : CreateUser)=>{
     try {
         const {data} = await Axios.post('api/auth/signup',user)
-        const decodedToken = await decodeJWT(data.access_token)
+        const decodedToken = await decodeJWT(data?.access_token)
         console.log(data,"token")
         localStorage.setItem('userInfo',JSON.stringify(decodedToken))
         return data
