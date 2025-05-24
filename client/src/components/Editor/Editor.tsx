@@ -6,6 +6,7 @@ import "grapesjs/dist/css/grapes.min.css";
 import "grapesjs-preset-webpage";
 import "grapesjs-blocks-basic";
 
+
 import tailwindPlugin from '../../plugins/tailwindPlugins';
 // import Axios from '../../config/axios';
 
@@ -34,14 +35,11 @@ export default function DefaultEditor() {
         if (head) {
           const tailwindCSS = document.createElement("link");
           tailwindCSS.rel = "stylesheet";
-          tailwindCSS.href =
-            "https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"; // Tailwind CDN
+          tailwindCSS.href = '../../../dist/assets/css/tailwind.min.css';  
           head.appendChild(tailwindCSS);
         }
       }
     });
-
-
 
     // Load saved design
     // axios.get(`http://localhost:3000/designs/${DESIGN_ID}`).then((res) => {
