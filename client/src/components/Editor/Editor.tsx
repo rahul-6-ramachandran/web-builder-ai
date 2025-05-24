@@ -35,7 +35,7 @@ export default function DefaultEditor() {
         if (head) {
           const tailwindCSS = document.createElement("link");
           tailwindCSS.rel = "stylesheet";
-          tailwindCSS.href = '../../../dist/assets/css/tailwind.min.css';  
+          tailwindCSS.href = 'https://buildui-frontend.onrender.com/assets/css/tailwind.min.css';  
           head.appendChild(tailwindCSS);
         }
       }
