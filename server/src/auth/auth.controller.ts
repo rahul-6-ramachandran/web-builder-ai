@@ -112,7 +112,7 @@ export class AuthController {
         }
       
     } catch (error) {
-      throw new NotFoundException({error : error.message})
+      throw new UnauthorizedException({error : error.message})
     }
     
   }

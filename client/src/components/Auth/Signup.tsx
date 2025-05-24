@@ -42,15 +42,18 @@ export default function Signup(){
         if(res?.userDetails){
             onSuccess("Sign Up Successful")
             console.log(res)
+    
             setTimeout(()=>{
                 navigate(`/${res.userDetails._id}`)
             },1000)
-            
         }
        })
        .catch((err)=>{
         onError(err)
         console.log(err.message)
+       })
+       .finally(()=>{
+        setLoading(false)
        })
     }
 

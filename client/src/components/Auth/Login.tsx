@@ -36,18 +36,20 @@ export default function Login() {
       return;
     }
     setError("");
-    try {
-      const res = await signIn(user,setUser);
-      if (res?.userDetails) {
-        onSuccess("Login Successful");
-        setLoading(false);
-        navigate(`/${res.userDetails._id}`);
-      }
-    } catch (error: any) {
-      onError("Something Went Wrong");
-      setLoading(false);
-      console.error(error.message);
-    }
+       signIn(user,setUser).then((res)=>{
+        if (res?.userDetails) {
+            onSuccess("Login Successful");
+            setLoading(false);
+            navigate(`/${res.userDetails._id}`);
+          }
+       }).catch((err: any)=>{
+        onError(err)
+        
+        console.log(err)
+       }).finally(()=>{
+        setLoading(false)
+       })
+   
   };
   return (
     <>
