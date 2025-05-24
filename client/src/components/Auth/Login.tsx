@@ -7,11 +7,14 @@ import { signIn } from "../../actions/Auth/Auth";
 
 // @ts-ignore
 import { onError, onSuccess } from "../Notifications/Notify";
+import { useAuth } from "../../store/userContext";
 
 export default function Login() {
   const navigate = useNavigate();
 
-  const [user, setUser] = useState<CreateUser>({
+  const {setUser} = useAuth()
+
+  const [user, setUserForLogin] = useState<CreateUser>({
     email: "",
     password: "",
   });
@@ -20,7 +23,7 @@ export default function Login() {
   const [loading, setLoading] = useState(false);
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setUser({ ...user, [e.target.name]: e.target.value });
+    setUserForLogin({ ...user, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e: any) => {
@@ -34,7 +37,7 @@ export default function Login() {
     }
     setError("");
     try {
-      const res = await signIn(user);
+      const res = await signIn(user,setUser);
       if (res?.userDetails) {
         onSuccess("Login Successful");
         setLoading(false);

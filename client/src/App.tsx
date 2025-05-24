@@ -15,9 +15,10 @@ import Projects from './components/Dashboard/Projects/Projects'
 import EditorLayout from './components/Layouts/EditorLayout'
 import ProtectedRoute from './components/Auth/ProtectedRoute'
 import PublicRoute from './components/Auth/PublicRoute'
+import { useAuth } from './store/userContext'
 
 function App() {
-
+const {loading} = useAuth()
   return (
     <>
      <div className='App'>
@@ -32,6 +33,7 @@ function App() {
         {/* <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} /> */}
         <Route path="/login" element={
+    
           <PublicRoute>
             <Login/>
             </PublicRoute>} />

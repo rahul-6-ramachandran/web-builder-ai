@@ -7,12 +7,14 @@ import { signUp } from '../../actions/Auth/Auth'
 
 // @ts-ignore
 import { onError, onSuccess , onWarning } from '../Notifications/Notify'
+import { useAuth } from '../../store/userContext'
 
 export default function Signup(){
 
+    const {setUser} = useAuth()
 
     const navigate = useNavigate()
-    const [user,setUser] = useState<CreateUser>({
+    const [user,setUserForSignup] = useState<CreateUser>({
         email: '',
         password: ''
     })
@@ -22,7 +24,7 @@ export default function Signup(){
    
 
     const onChange = (e: any)=>{
-        setUser({...user,[e.target.name]: e.target.value})
+        setUserForSignup({...user,[e.target.name]: e.target.value})
     }
     
     const handleSubmit = async(e:any)=>{
@@ -35,7 +37,7 @@ export default function Signup(){
         }
         setError('')
         // console.log(user,"user")
-       await signUp(user)
+       await signUp(user,setUser)
        .then((res)=>{
         if(res?.userDetails){
             onSuccess("Sign Up Successful")
