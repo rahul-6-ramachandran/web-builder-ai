@@ -41,7 +41,7 @@ export class AuthService {
 
 
   async hashPassword(plainPassword: string){
-    const saltRounds = 10
+    const saltRounds = 5
     return bcrypt.hash(plainPassword,saltRounds)
   }
 
