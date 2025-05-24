@@ -10,11 +10,13 @@ import { onError, onSuccess , onWarning } from '../Notifications/Notify'
 
 export default function Signup(){
 
+
     const navigate = useNavigate()
     const [user,setUser] = useState<CreateUser>({
         email: '',
         password: ''
     })
+
     const [error,setError] = useState('')
     const [loading,setLoading] = useState(false)
    
@@ -26,7 +28,7 @@ export default function Signup(){
     const handleSubmit = async(e:any)=>{
         e.preventDefault(); 
         setLoading(true)
-        if(user.password.length < 6){
+        if(user?.password?.length < 6){
             setError("Password Must be 6 characters long")
             setLoading(false)
             return;

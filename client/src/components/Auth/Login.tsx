@@ -27,7 +27,7 @@ export default function Login() {
     e.preventDefault();
     // console.log(user,"uswe")
     setLoading(true);
-    if (user.password.length < 6) {
+    if (user?.password?.length < 6) {
       setError("Password Must be 6 characters long");
       setLoading(false);
       return;

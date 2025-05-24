@@ -6,3 +6,9 @@ export interface CreateUser{
 export type SuccessProps = {
     message : string
 }
+
+export interface UserDetails{
+    user_id : string
+    email : string
+
+}
