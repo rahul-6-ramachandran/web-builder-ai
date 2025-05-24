@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
+
 import { Link } from "react-router-dom";
 import { HashLink } from "react-router-hash-link"
-import { UserDetails } from "../../types.dto";
+
 import { useAuth } from "../../store/userContext";
 
 export default function NavBar(){

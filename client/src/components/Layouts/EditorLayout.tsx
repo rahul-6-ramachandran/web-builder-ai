@@ -1,6 +1,6 @@
-import { lazy, Suspense, useEffect, useState } from "react";
+import { lazy, Suspense,  } from "react";
 import EditorSidebar from "../Editor/EditorSidebar";
-import { UserDetails } from "../../types.dto";
+
 const DefaultEditor = lazy(() => import("../Editor/Editor"));
 export default function EditorLayout() {
       
