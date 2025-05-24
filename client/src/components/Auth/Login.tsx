@@ -12,7 +12,7 @@ import { useAuth } from "../../store/userContext";
 export default function Login() {
   const navigate = useNavigate();
 
-  const {setUser} = useAuth()
+  const { setUser } = useAuth();
 
   const [user, setUserForLogin] = useState<CreateUser>({
     email: "",
@@ -36,20 +36,22 @@ export default function Login() {
       return;
     }
     setError("");
-       signIn(user,setUser).then((res)=>{
+    signIn(user, setUser)
+      .then((res) => {
         if (res?.userDetails) {
-            onSuccess("Login Successful");
-            setLoading(false);
-            navigate(`/${res.userDetails._id}`);
-          }
-       }).catch((err: any)=>{
-        onError(err)
-        
-        console.log(err)
-       }).finally(()=>{
-        setLoading(false)
-       })
-   
+          onSuccess("Login Successful");
+          setLoading(false);
+          navigate(`/${res.userDetails._id}`);
+        }
+      })
+      .catch((err: any) => {
+        onError(err);
+
+        console.log(err);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   };
   return (
     <>
