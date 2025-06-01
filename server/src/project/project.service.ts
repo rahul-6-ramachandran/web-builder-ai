@@ -11,8 +11,9 @@ export class ProjectService {
     @InjectModel(ProjectSchemaName)
     private readonly projectModel : Model<ProjectDocument>
   ){}
- async create(createProjectDto: CreateProjectDto) {
-    return await this.projectModel.create(createProjectDto)
+ async create(project: CreateProjectDto) {
+  console.log(project)
+    return await this.projectModel.create(project)
   }
 
   findAll() {

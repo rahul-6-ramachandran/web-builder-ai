@@ -1,6 +1,45 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { Allow, IsEmail, IsNotEmpty, IsString } from "class-validator";
+import { Type } from "class-transformer";
+import { Allow, IsArray, IsEmail, IsNotEmpty, IsOptional, IsString } from "class-validator";
 import { Types } from "mongoose";
+
+export class ProjectData {
+    @IsOptional()
+    html : string
+
+    @IsOptional()
+    css : string
+
+    @IsOptional()
+    @IsArray()
+    components : any []
+
+    @IsOptional()
+    @IsArray()
+    styles : any []
+
+    
+    @IsOptional()
+    @IsArray()
+    dataSources : any []
+
+    
+    @IsOptional()
+    @IsArray()
+    assets : any []
+
+    
+    @IsOptional()
+    @IsArray()
+    symbols : any []
+
+    
+    @IsOptional()
+    @IsArray()
+    pages : any []
+
+}
+
 
 export class CreateProjectDto {
     
@@ -11,33 +50,29 @@ export class CreateProjectDto {
 
     @ApiProperty({ required : true , description:"User Created Web-Page"})
     @IsNotEmpty()
-    @Allow()
-    project : any
+    @Type(() => ProjectData)
+    project : ProjectData 
 
     
     @ApiProperty({ required : false , description:"Is hosted or not"})
     @IsNotEmpty()
-    @Allow()
     hosted : boolean
 
     
     @ApiProperty({ required : false , description:"Web-Page Description"})
-    @IsNotEmpty()
-    @Allow()
+    @IsOptional()
     description : string
 
 
     
     @ApiProperty({ required : false , description:"Web-Page Hosted URL"})
-    @IsNotEmpty()
-    @Allow()
+    @IsOptional()
     hostedURL : string
 
 
     
     
     @ApiProperty({ required : false , description:"User Id"})
-    @IsNotEmpty()
-    @Allow()
+    @IsOptional()
     createdBy : string | Types.ObjectId
 }
