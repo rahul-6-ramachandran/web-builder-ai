@@ -1,10 +1,8 @@
-import { lazy, Suspense,  } from "react";
+import { lazy, Suspense } from "react";
 import EditorSidebar from "../Editor/EditorSidebar";
 
 const DefaultEditor = lazy(() => import("../Editor/Editor"));
 export default function EditorLayout() {
-      
-    
   return (
     <>
       <div className="flex flex-col">
