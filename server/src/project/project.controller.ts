@@ -11,7 +11,7 @@ export class ProjectController {
   @Post()
   @UseGuards(AuthGuard('jwt'))
   createNewProject(
-    @Req() request : Request
+    @Req() request : Request,
     @Body() createProjectDto: CreateProjectDto
   ) {
     // const {user} = request.user
