@@ -1,16 +1,22 @@
 import grapesjs from "grapesjs";
 // import GjsEditor from '@grapesjs/react';
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import "grapesjs/dist/css/grapes.min.css";
 import "grapesjs-preset-webpage";
 import "grapesjs-blocks-basic";
 
 import tailwindPlugin from "../../plugins/tailwindPlugins";
+import CreateProject from "./forms/createProject";
+import { createNewProject } from "../../actions/Projects/Project";
+import { Project} from "../../types.dto";
 // import Axios from '../../config/axios';
 
 export default function DefaultEditor() {
   const editorRef = useRef<HTMLDivElement>(null);
+
+  const [saveModelOpen, setSaveModelOpen] = useState(false)
+  
 
   useEffect(() => {
     if (!editorRef.current) return;
@@ -45,11 +51,16 @@ export default function DefaultEditor() {
     //   }
     // });
 
-    const saveDesign = () => {
-      const data = editor.getProjectData();
-      console.log("DesignData", data);
-      // Axios.post("http://localhost:3000/designs/save", { id: DESIGN_ID, data });
-    };
+   
+    editor.Commands.add('save-design', {
+      run(editor, sender) {
+        const data = editor.getProjectData();
+        console.log("DesignData", data);
+        setSaveModelOpen(true);
+        // Axios.post("http://localhost:3000/designs/save", { id: DESIGN_ID, data });
+      },
+    });
+
 
     const undo = () => {
       editor.UndoManager.undo();
@@ -62,7 +73,7 @@ export default function DefaultEditor() {
     editor.Panels.addButton("options", {
       id: "save-button",
       className: "fa fa-save",
-      command: saveDesign,
+      command: 'save-design',
       attributes: { title: "Save Design" },
     });
 
@@ -79,11 +90,26 @@ export default function DefaultEditor() {
       command: redo,
       attributes: { title: "Redo" },
     });
+
+    return () => editor.destroy()
   });
+
+  // Project Submit function
+ 
   return (
+   <>
     <div
       ref={editorRef}
       className="md:w-full  h-screen bg-gradient-to-r from-blue-900 via-gray-900 to-slate-950 hover:bg-gradient-to-br"
-    ></div>
+    >
+      
+    </div>
+    {saveModelOpen &&
+          <div>
+          <CreateProject setSaveModelOpen={setSaveModelOpen}/>
+        </div>
+      }
+      
+   </>
   );
 }

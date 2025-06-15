@@ -12,3 +12,11 @@ export interface UserDetails{
     email : string
 
 }
+
+export interface Project{
+    title : string
+    project : any
+    hosted : boolean
+    description : string
+    hostedURL : string
+}

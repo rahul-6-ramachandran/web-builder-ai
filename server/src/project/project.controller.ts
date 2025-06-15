@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards, Req } from '@nestjs/common';
 import { ProjectService } from './project.service';
 import { CreateProjectDto } from '../dto/projects/create-project.dto';
 import { UpdateProjectDto } from '../dto/projects/update-project.dto';
@@ -10,7 +10,11 @@ export class ProjectController {
 
   @Post()
   @UseGuards(AuthGuard('jwt'))
-  createNewProject(@Body() createProjectDto: CreateProjectDto) {
+  createNewProject(
+    @Req() request : Request
+    @Body() createProjectDto: CreateProjectDto
+  ) {
+    // const {user} = request.user
     return this.projectService.create(createProjectDto);
   }
 
