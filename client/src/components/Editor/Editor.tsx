@@ -10,14 +10,17 @@ import tailwindPlugin from "../../plugins/tailwindPlugins";
 import CreateProject from "./forms/createProject";
 import { createNewProject } from "../../actions/Projects/Project";
 import { Project} from "../../types.dto";
+import { useNavigate, useParams } from "react-router-dom";
+import { useProject } from "../../store/projectContext";
 // import Axios from '../../config/axios';
 
 export default function DefaultEditor() {
   const editorRef = useRef<HTMLDivElement>(null);
 
+  const {setProject} = useProject()
+  const {id} = useParams()
   const [saveModelOpen, setSaveModelOpen] = useState(false)
-  
-
+  const navigate = useNavigate()
   useEffect(() => {
     if (!editorRef.current) return;
 
@@ -55,8 +58,12 @@ export default function DefaultEditor() {
     editor.Commands.add('save-design', {
       run(editor, sender) {
         const data = editor.getProjectData();
+        setProject(data)
         console.log("DesignData", data);
-        setSaveModelOpen(true);
+        setTimeout(() => {
+          navigate(`/editor/${id}/save`);
+        }, 100)
+        // setSaveModelOpen(true);
         // Axios.post("http://localhost:3000/designs/save", { id: DESIGN_ID, data });
       },
     });
@@ -104,11 +111,11 @@ export default function DefaultEditor() {
     >
       
     </div>
-    {saveModelOpen &&
-          <div>
+    {/* {saveModelOpen &&
+          <div className="w-full"  style={{ position: 'fixed', zIndex: 9999, top: 0, left: 0, right: 0, bottom: 0 }}>
           <CreateProject setSaveModelOpen={setSaveModelOpen}/>
         </div>
-      }
+      } */}
       
    </>
   );

@@ -6,6 +6,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { UserModule } from './user/user.module';
 import { ProjectModule } from './project/project.module';
+import { SharedModule } from './shared.module';
 
 @Module({
   
@@ -25,7 +26,7 @@ import { ProjectModule } from './project/project.module';
     }),
     
     AuthModule,
-    
+    SharedModule,
     UserModule,
     
     ProjectModule

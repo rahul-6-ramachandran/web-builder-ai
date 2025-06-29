@@ -20,3 +20,16 @@ export interface Project{
     description : string
     hostedURL : string
 }
+
+
+export interface ProjectData {
+    html : string
+    css : string
+    components : any []
+    styles : any []
+    dataSources : any []
+    assets : any []
+    symbols : any []
+    pages : any []
+
+}

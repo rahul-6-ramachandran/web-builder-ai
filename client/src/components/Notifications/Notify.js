@@ -1,7 +1,7 @@
 import 'react-toastify/dist/ReactToastify.css'
 import { toast } from "react-toastify"
 
-export const onSuccess = (data)=>{
+export const onSuccess = (data )=>{
     toast.success(data,{position: "top-center" ,theme:"dark" } )
 }
 

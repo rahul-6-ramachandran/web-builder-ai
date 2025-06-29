@@ -1,5 +1,6 @@
 import { lazy, Suspense } from "react";
 import EditorSidebar from "../Editor/EditorSidebar";
+import { Outlet } from "react-router-dom";
 
 const DefaultEditor = lazy(() => import("../Editor/Editor"));
 export default function EditorLayout() {
@@ -13,9 +14,13 @@ export default function EditorLayout() {
           <Suspense
             fallback={<span className="loading loading-bars loading-xl"></span>}
           >
-            <DefaultEditor />
+              <Outlet /> 
+            
           </Suspense>
+
+         
         </div>
+      
       </div>
     </>
   );
