@@ -3,7 +3,11 @@ import { Type } from "class-transformer";
 import { Allow, IsArray, IsEmail, IsNotEmpty, IsOptional, IsString } from "class-validator";
 import { Types } from "mongoose";
 
-export class ProjectData {
+
+
+export class CreateProjectDto {
+   
+
     @IsOptional()
     html : string
 
@@ -40,39 +44,3 @@ export class ProjectData {
 
 }
 
-
-export class CreateProjectDto {
-    
-    @ApiProperty({required : true ,description : "Title of the Web-Page"})
-    @IsNotEmpty()
-    @IsString()
-    title : string
-
-    @ApiProperty({ required : true , description:"User Created Web-Page"})
-    @IsNotEmpty()
-    @Type(() => ProjectData)
-    project : ProjectData 
-
-    
-    @ApiProperty({ required : false , description:"Is hosted or not"})
-    @IsNotEmpty()
-    hosted : boolean
-
-    
-    @ApiProperty({ required : false , description:"Web-Page Description"})
-    @IsOptional()
-    description : string
-
-
-    
-    @ApiProperty({ required : false , description:"Web-Page Hosted URL"})
-    @IsOptional()
-    hostedURL : string
-
-
-    
-    
-    @ApiProperty({ required : false , description:"User Id"})
-    @IsOptional()
-    createdBy : string | Types.ObjectId
-}

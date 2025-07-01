@@ -16,8 +16,7 @@ const Axios: AxiosInstance = axios.create({
 // within the header portion of the request
 Axios.interceptors.request.use((config)=>{
    try {
-      let token =  localStorage.getItem('userInfo')
-
+      let token =  localStorage.getItem('token')
    config.headers['Authorization'] = 'Bearer ' + token
    return config
    } catch (error) {

@@ -3,6 +3,7 @@ import { ProjectService } from './project.service';
 import { CreateProjectDto } from '../dto/projects/create-project.dto';
 import { UpdateProjectDto } from '../dto/projects/update-project.dto';
 import { AuthGuard } from 'src/middlewares/auth.guard';
+import { AuthRequest, UserPayload } from 'src/common.types';
 
 
 @Controller('api/project')
@@ -12,11 +13,12 @@ export class ProjectController {
   @Post()
   @UseGuards(AuthGuard)
   createNewProject(
-    @Req() request : Request,
+    @Req() request : AuthRequest,
     @Body() createProjectDto: CreateProjectDto
   ) {
-    // const {user} = request.user
-    return this.projectService.create(createProjectDto);
+    const {user_id} = request.user
+    console.log(createProjectDto,"createProject")
+    return this.projectService.create(createProjectDto,user_id);
   }
 
   @Get()

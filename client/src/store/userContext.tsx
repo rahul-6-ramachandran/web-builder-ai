@@ -9,8 +9,8 @@ import React, {
 import { UserDetails } from "../types.dto";
 
 const AuthContext = createContext<{
-  user: UserDetails | null;
-  setUser: Dispatch<SetStateAction<UserDetails | null>>;
+  user: string | null;
+  setUser: Dispatch<SetStateAction<string | null>>;
   loading: boolean;
 }>({
   user: null,
@@ -18,16 +18,18 @@ const AuthContext = createContext<{
   loading: true,
 });
 
+export const useAuth = () => useContext(AuthContext);
+
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
-  const [user, setUser] = useState<UserDetails | null>(null);
+  const [user, setUser] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const userData = localStorage.getItem("userInfo");
+    const userData = localStorage.getItem("token");
     console.log("UserData", userData);
     if (userData) {
       try {
-        setUser(JSON.parse(userData));
+        setUser(userData);
       } catch (err) {
         console.error("Invalid user data in localStorage", err);
       }
@@ -46,4 +48,4 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-export const useAuth = () => useContext(AuthContext);
+

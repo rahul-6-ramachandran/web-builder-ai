@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { createNewProject } from "../../../actions/Projects/Project"
 import { Project } from "../../../types.dto"
 
@@ -18,22 +18,34 @@ export default function CreateProject(){
         description : ''
       })
     
-      const navigate = useNavigate()
       const {id} = useParams()
       const {project} = useProject()
 
       console.log(project,"ProjectData")
-    const handleSubmit = async()=>{
-        createNewProject(formData)
-        .then((res)=>{
-            onSuccess("Projected Created Successfully")
-            navigate(`/editor/${id}`)
-        })
-      }
+      useEffect(() => {
+        if (project) {
+          setFormData(prev => {
+            if (!prev) return null;
+            return {
+              ...prev,
+              project,
+            };
+          });
+        }
+      }, [project]);
+      
+    // const handleSubmit = async()=>{
+    //     createNewProject(formData)
+    //     .then((res)=>{
+    //         onSuccess("Project Created Successfully")
+    //         navigate(`/editor/${id}`)
+    //     })
+    //   }
 
+      console.log(project)
     return(<>
     <div className="w-full items-center justify-center flex h-screen">
-    <form  onSubmit={handleSubmit} className="p-4 md:p-5 w-1/2 items-center">
+    <form className="p-4 md:p-5 w-1/2 items-center">
                 <div className="grid gap-4 mb-4 grid-cols-2">
                     <div className="col-span-2">
                         <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Project Title</label>

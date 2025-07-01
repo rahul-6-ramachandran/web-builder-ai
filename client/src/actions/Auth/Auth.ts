@@ -19,7 +19,8 @@ export const signIn = async (
 
     console.log(decodedToken, "decodedToken");
 
-    localStorage.setItem("userInfo", JSON.stringify(decodedToken));
+ 
+    localStorage.setItem("token", data.access_token)
     setUser(decodedToken);
 
     return data;
@@ -38,7 +39,7 @@ export const signUp = async (
     const { data } = await Axios.post("api/auth/signup", user);
     const decodedToken = await decodeJWT(data?.access_token);
     console.log(data, "token");
-    localStorage.setItem("userInfo", JSON.stringify(decodedToken));
+    localStorage.setItem("token", data.access_token)
     setUser(decodedToken);
 
     return data;

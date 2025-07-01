@@ -3,7 +3,7 @@ import { CreateProjectDto } from '../dto/projects/create-project.dto';
 import { UpdateProjectDto } from '../dto/projects/update-project.dto';
 import { InjectModel } from '@nestjs/mongoose';
 import { ProjectDocument, ProjectSchemaName } from 'src/models/projectModel';
-import { Model } from 'mongoose';
+import { Model, Types } from 'mongoose';
 
 @Injectable()
 export class ProjectService {
@@ -11,9 +11,15 @@ export class ProjectService {
     @InjectModel(ProjectSchemaName)
     private readonly projectModel : Model<ProjectDocument>
   ){}
- async create(project: CreateProjectDto) {
-  console.log(project)
-    return await this.projectModel.create(project)
+ async create(project: CreateProjectDto , user_id : string) {
+  const newProject = {
+    title : "New Project",
+    project : {
+      ...project
+    },
+    createdBy : new Types.ObjectId(user_id),
+  }
+    return await this.projectModel.create(newProject)
   }
 
   findAll() {

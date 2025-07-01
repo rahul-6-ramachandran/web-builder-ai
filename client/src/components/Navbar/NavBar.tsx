@@ -6,6 +6,8 @@ import { useAuth } from "../../store/userContext";
 
 export default function NavBar(){
      const {user} = useAuth()
+
+     console.log(user,"sfdsfs")
       
         
     return (

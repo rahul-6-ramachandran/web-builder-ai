@@ -1,3 +1,5 @@
+import { ProjectData } from "grapesjs"
+
 export interface CreateUser{
     email: string,
     password : string
@@ -15,21 +17,22 @@ export interface UserDetails{
 
 export interface Project{
     title : string
-    project : any
+    project : ProjectData
     hosted : boolean
     description : string
     hostedURL : string
 }
 
 
-export interface ProjectData {
-    html : string
-    css : string
-    components : any []
-    styles : any []
-    dataSources : any []
-    assets : any []
-    symbols : any []
-    pages : any []
 
-}
+// export interface ProjectData {
+//     html : string
+//     css : string
+//     components : any []
+//     styles : any []
+//     dataSources : any []
+//     assets : any []
+//     symbols : any []
+//     pages : any []
+
+// }

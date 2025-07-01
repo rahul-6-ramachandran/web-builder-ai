@@ -6,6 +6,11 @@ import "grapesjs/dist/css/grapes.min.css";
 import "grapesjs-preset-webpage";
 import "grapesjs-blocks-basic";
 
+
+
+// @ts-ignore
+import { onSuccess } from "../Notifications/Notify"
+
 import tailwindPlugin from "../../plugins/tailwindPlugins";
 import CreateProject from "./forms/createProject";
 import { createNewProject } from "../../actions/Projects/Project";
@@ -56,15 +61,18 @@ export default function DefaultEditor() {
 
    
     editor.Commands.add('save-design', {
-      run(editor, sender) {
+      async run(editor, sender) {
         const data = editor.getProjectData();
         setProject(data)
         console.log("DesignData", data);
         setTimeout(() => {
           navigate(`/editor/${id}/save`);
         }, 100)
-        // setSaveModelOpen(true);
-        // Axios.post("http://localhost:3000/designs/save", { id: DESIGN_ID, data });
+        createNewProject(data)
+        .then((res)=>{
+                    onSuccess("Project Created Successfully")
+                    navigate(`/projects/${id}`)
+                })
       },
     });
 
