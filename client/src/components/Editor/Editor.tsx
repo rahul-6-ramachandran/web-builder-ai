@@ -65,9 +65,6 @@ export default function DefaultEditor() {
         const data = editor.getProjectData();
         setProject(data)
         console.log("DesignData", data);
-        setTimeout(() => {
-          navigate(`/editor/${id}/save`);
-        }, 100)
         createNewProject(data)
         .then((res)=>{
                     onSuccess("Project Created Successfully")

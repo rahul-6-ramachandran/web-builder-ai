@@ -1,5 +1,5 @@
 import axios, { AxiosInstance } from "axios";
-
+import { goTo } from '../../src/utils/navigate'
 // @ts-ignore
 import { onError } from '../components/Notifications/Notify'
 
@@ -29,6 +29,9 @@ Axios.interceptors.response.use(
    response => response,
    error => {
      const message = error.response?.data?.message || 'An error occurred';
+     if(error?.response?.data?.statusCode === 401){
+      goTo("/login");
+     }
      onError(message); // Show toast
      return Promise.reject(error);
    },

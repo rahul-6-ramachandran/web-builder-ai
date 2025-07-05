@@ -1,4 +1,4 @@
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import "./App.css";
 import Home from "./components/Home/home";
 // import NavBar from './components/Navbar/NavBar'
@@ -16,14 +16,22 @@ import PublicRoute from "./components/Auth/PublicRoute";
 import CreateProject from "./components/Editor/forms/createProject";
 import { PROJECT_PATH } from "./common";
 import DefaultEditor from "./components/Editor/Editor";
+import { useEffect } from "react";
+import { setNavigator } from "./utils/navigate";
 
 function App() {
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    setNavigator(navigate);
+  }, [navigate]);
   return (
     <>
       <div className="App">
         <ToastContainer />
 
-        <Router>
+
           <Routes>
             <Route path="/" element={<Home />} />
             {/* <Route path="/about" element={<About />} />
@@ -88,7 +96,7 @@ function App() {
             {/* <Route path=''/> */}
             {/* </Route> */}
           </Routes>
-        </Router>
+
       </div>
     </>
   );
