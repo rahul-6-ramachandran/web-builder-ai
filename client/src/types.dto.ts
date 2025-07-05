@@ -24,7 +24,6 @@ export interface Project{
 }
 
 
-
 // export interface ProjectData {
 //     html : string
 //     css : string

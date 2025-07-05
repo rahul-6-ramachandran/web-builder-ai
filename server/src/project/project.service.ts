@@ -22,8 +22,10 @@ export class ProjectService {
     return await this.projectModel.create(newProject)
   }
 
-  findAll() {
-    return `This action returns all project`;
+  async findAll(user_id : string) {
+    return await this.projectModel.find({
+      createdBy : new Types.ObjectId(user_id) 
+    })
   }
 
   findOne(id: number) {

@@ -33,14 +33,14 @@ export const signIn = async (
 // Signup
 export const signUp = async (
   user: CreateUser,
-  setUser: (u: UserDetails) => void
+  setUser: (u: string) => void
 ) => {
   try {
     const { data } = await Axios.post("api/auth/signup", user);
-    const decodedToken = await decodeJWT(data?.access_token);
+   
     console.log(data, "token");
     localStorage.setItem("token", data.access_token)
-    setUser(decodedToken);
+    setUser(data?.access_token);
 
     return data;
   } catch (error) {

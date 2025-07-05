@@ -22,8 +22,11 @@ export class ProjectController {
   }
 
   @Get()
-  findAll() {
-    return this.projectService.findAll();
+  findAll(
+    @Req() request : AuthRequest,
+  ) {
+    const {user_id} = request.user
+    return this.projectService.findAll(user_id);
   }
 
   @Get(':id')

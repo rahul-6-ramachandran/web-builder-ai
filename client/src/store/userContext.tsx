@@ -9,7 +9,7 @@ import React, {
 import { UserDetails } from "../types.dto";
 
 const AuthContext = createContext<{
-  user: string | null;
+  user: string | null 
   setUser: Dispatch<SetStateAction<string | null>>;
   loading: boolean;
 }>({
